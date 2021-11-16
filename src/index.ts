@@ -1,9 +1,10 @@
 import axios from "axios";
+import cors from "cors";
 import express, { NextFunction, Request, Response, Router } from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
-import { serverConfig } from "../package.json";
 
+const port = 4000;
 const IS_PRODUCTION = process.env.NODE_ENV === "production";
 
 const client_id = IS_PRODUCTION
@@ -12,8 +13,6 @@ const client_id = IS_PRODUCTION
 const client_secret = IS_PRODUCTION
   ? "67f64eb89fd743e9c6b28f73c3cac4c7f498cc1e"
   : "f6bb409af4a96a7117e4ad669f69e3b88a640fff";
-
-const { port } = serverConfig;
 
 const app = express();
 const server = createServer(app);
@@ -31,6 +30,7 @@ app.use((req: Request, _res: Response, next: NextFunction) => {
   next();
 });
 
+app.use(cors());
 app.use("/api", router);
 
 router
