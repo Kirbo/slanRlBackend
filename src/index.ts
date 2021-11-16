@@ -27,7 +27,7 @@ app.use(
 app.use(express.json({ limit: "50mb", extended: true, parameterLimit: 50000 }));
 
 app.use((req: Request, _res: Response, next: NextFunction) => {
-  console.log(`${req.method} ${req.path}, ${JSON.stringify(req.params)}`);
+  console.log(`${req.method} ${req.path}`);
   next();
 });
 
@@ -36,14 +36,11 @@ app.use("/api", router);
 
 router
   .post("/access_token", (req: Request, res: Response) => {
-    console.log("req.body.code", req.body.code);
     const data = {
       client_id,
       client_secret,
       code: req.body.code,
     };
-
-    console.log("data", data);
 
     const options = {
       headers: {
@@ -66,8 +63,6 @@ router
         Authorization: `${req.headers.authorization}`,
       },
     };
-
-    console.log("req.query", req.query);
 
     axios.get(`${req.query.file}`, options).then(response => {
       res.send(response.data);
@@ -94,8 +89,6 @@ router
         Authorization: `${req.headers.authorization}`,
       },
     };
-
-    console.log("req.body", req.body);
 
     axios
       .post(`https://api.github.com/gists`, req.body, options)
@@ -132,7 +125,6 @@ router
     };
 
     axios.get("https://api.github.com/user", options).then(response => {
-      console.log("user response", response);
       res.send(response.data);
     });
   });
