@@ -15,8 +15,6 @@ const client_id = IS_PRODUCTION
   : "93b9deac9ac0b91c370a";
 const client_secret = process.env.CLIENT_SECRET;
 
-console.log("client_secret", client_secret);
-
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
@@ -141,6 +139,7 @@ router
 
 server.listen(port, () => {
   console.log(`Listening on http://localhost:${port}`);
+  console.log("client_secret", client_secret);
 });
 
 /* Socket stuff */
