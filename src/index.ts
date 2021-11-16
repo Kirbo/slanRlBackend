@@ -42,6 +42,8 @@ router
       code: req.body.code,
     };
 
+    console.log("data", data);
+
     const options = {
       headers: {
         "Access-Control-Allow-Origin": "*",
