@@ -139,7 +139,6 @@ router
 
 server.listen(port, () => {
   console.log(`Listening on http://localhost:${port}`);
-  console.log("client_secret", client_secret);
 });
 
 /* Socket stuff */

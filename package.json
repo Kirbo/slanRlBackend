@@ -11,6 +11,7 @@
     "lint:fix": "eslint . --ext .ts --fix",
     "dev": "nodemon",
     "start": "rm -rf dist && yarn build && yarn start:pm2",
+    "start:dev": "ts-node src/index.ts",
     "start:pm2": "pm2 startOrRestart ecosystem.config.js",
     "verify": "tsc --noEmit"
   },
