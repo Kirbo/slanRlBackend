@@ -6,7 +6,7 @@ module.exports = {
   apps: [
     {
       name: "Slan Roguelike",
-      script: "dist/index.js",
+      script: "./dist/index.js",
       watch: false,
       max_restarts: 0,
       autorestart: true,
