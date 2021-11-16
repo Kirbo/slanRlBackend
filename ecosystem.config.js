@@ -6,8 +6,8 @@ module.exports = {
   apps: [
     {
       name: "Slan Roguelike",
-      script: "yarn",
-      args: "start",
+      script: "ts-node",
+      args: "src/index.ts",
       watch: false,
       max_restarts: 0,
       autorestart: true,
