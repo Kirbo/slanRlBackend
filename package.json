@@ -6,7 +6,7 @@
   "author": "Kimmo Saari <kirbownz@me.com>",
   "license": "MIT",
   "serverConfig": {
-    "port": 3000
+    "port": 4000
   },
   "scripts": {
     "lint": "eslint . --ext .ts",
