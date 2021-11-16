@@ -13,7 +13,6 @@ module.exports = {
       autorestart: true,
       restart_delay: 1000,
       max_memory_restart: "120M",
-      interpreter: "node@14.18.1",
     },
   ],
 };
