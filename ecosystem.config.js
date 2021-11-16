@@ -9,6 +9,8 @@ module.exports = {
       script: "yarn",
       args: "start",
       watch: false,
+      max_memory_restart: "120M",
+      interpreter: "node@14.18.1",
     },
   ],
 };
