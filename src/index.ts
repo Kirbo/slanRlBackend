@@ -136,8 +136,8 @@ server.listen(port, () => {
 /* Socket stuff */
 
 interface Score {
-  playername?: string;
-  gamestatus: number;
+  playerName?: string;
+  gameStatus: number;
   depth: number;
   turns: number;
 }
@@ -187,7 +187,7 @@ io.on("connection", async client => {
   client.on("score", (score: Score) => {
     if (
       ![GameStatus.MAINMENU, GameStatus.NEWGAME, GameStatus.DEFEAT].includes(
-        score.gamestatus,
+        score.gameStatus,
       )
     ) {
       liveScores[client.id] = score;
@@ -196,8 +196,8 @@ io.on("connection", async client => {
   client.on("dead", (score: Score) => {
     delete liveScores[client.id];
 
-    if (score.playername) {
-      const playerTopScores = topScores[score.playername];
+    if (score.playerName) {
+      const playerTopScores = topScores[score.playerName];
       if (playerTopScores) {
         const { depth, turns } = playerTopScores;
         if (
@@ -207,7 +207,7 @@ io.on("connection", async client => {
           return;
         }
       }
-      topScores[score.playername] = score;
+      topScores[score.playerName] = score;
     }
   });
   client.on("disconnect", () => {
